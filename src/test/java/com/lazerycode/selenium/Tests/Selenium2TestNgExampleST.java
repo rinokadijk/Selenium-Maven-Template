@@ -11,7 +11,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 @Listeners(ScreenshotListener.class)
-public class Selenium2ExampleST extends SeleniumBase {
+public class Selenium2TestNgExampleST extends SeleniumBase {
 
   @Test
   public void googleCheeseExample() {

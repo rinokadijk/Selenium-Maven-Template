@@ -1,6 +1,9 @@
 package com.lazerycode.selenium;
 
 import com.opera.core.systems.OperaDriver;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -35,6 +38,7 @@ public class SeleniumBase {
     };
 
     @BeforeSuite
+    @BeforeClass
     public static void setUpTest() {
         for (BrowserType browser : BrowserType.values()) {
             if (browser.toString().toLowerCase().equals(_prop.getString("browser").toLowerCase())) {
@@ -48,6 +52,7 @@ public class SeleniumBase {
     }
 
     @AfterSuite
+    @AfterClass
     public static void tearDown() {
         for (WebDriver driver : webDrivers) {
             driver.quit();
@@ -55,7 +60,8 @@ public class SeleniumBase {
     }
 
     @AfterMethod
-    public static void clearCookies() {
+    @After
+    public void clearCookies() {
         getDriver().manage().deleteAllCookies();
     }
 
